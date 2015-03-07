@@ -3,19 +3,23 @@
 __greet() {
 	local hostname=$(hostname)
 	local kernelinfo=$(uname --kernel-name --kernel-release --hardware-platform --operating-system)
-	local date=$(date "+%Y-%m-%d %I:%M:%S %p")
+	local date="$(date "+%a, %b %_d %Y · %I:%M:%S %p %z (%Z) · %s")"
+	local mounts="$(df --human-readable --exclude-type=tmpfs --exclude-type=devtmpfs --exclude-type=ecryptfs -T | tail --lines=+2)"
 	local osinfo="$(lsb_release -ds) $(lsb_release -cs)"
-	local uptime=$(uptime)
+	local uptime="$(uptime)"
 	local users="$(who --users)"
 	
 	/bin/echo -e "$__hostcolor"
-	 __print_centered_multiline "$(toilet --font "pagga" $hostname)"
+	 __print_centered_multiline "$(toilet --font "$__hostfont" $hostname)"
 	/bin/echo -e "$__reset"
 	
 	__print_centered_string "$date"
-	__print_centered_string "$kernelinfo"
-	__print_centered_string "$osinfo"
+	__print_centered_line
+	__print_centered_string "$osinfo · $kernelinfo"
 	__print_centered_string "$uptime"
-	#__print_centered_string "$users"
+	__print_centered_line
+	__print_centered_multiline "$mounts"
+	__print_centered_line
+	__print_centered_multiline "$users"
 }
 

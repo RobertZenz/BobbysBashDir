@@ -7,15 +7,10 @@
 # binaryanomaly - v0.2                                                         #
 # https://github.com/binaryanomaly/bash_files                                  #
 #                                                                              #
+# Edited and customized by Robert 'Bobby' Zenz                                 #
+# https://github.com/RobertZenz/BobbysBashDir                                  #
 ################################################################################
 
-__print_line() {
-    local line="--------------------------------------------------------------------------------"
-    
-    printf "${GREY}"
-    __print_centered_string "$line" "0"
-    printf "\n"
-}
 
 __print_ascii_art() {
     printf "%s\n" "$1" | toilet -w $COLUMNS
@@ -25,6 +20,22 @@ __print_ascii_art_lolcat() {
     { printf "%s\n" "$1" | toilet -w $COLUMNS ; __print_centered_string "$2" ; } | lolcat -S 550
 }
 
+__print_centered_line() {
+	local length=$1
+	
+	if [ -z "$length" ]; then
+		length=72
+	fi
+	
+	local char="-"
+	local line=""
+	
+	for counter in $(seq $length); do
+		line=$line$char
+	done
+	
+	__print_centered_string $line
+}
 
 __print_centered_string() {
     local c_string="$1"
