@@ -9,8 +9,7 @@
 #                                                                              #
 ################################################################################
 
-__print_line ()
-{
+__print_line() {
     local line="--------------------------------------------------------------------------------"
     
     printf "${GREY}"
@@ -18,19 +17,16 @@ __print_line ()
     printf "\n"
 }
 
-__print_ascii_art ()
-{
-    printf "%s\n" "$1" | figlet -w $COLUMNS
+__print_ascii_art() {
+    printf "%s\n" "$1" | toilet -w $COLUMNS
 }
 
-__print_ascii_art_lolcat ()
-{
-    { printf "%s\n" "$1" | figlet -w $COLUMNS -c ; __print_centered_string "$2" ; } | lolcat -S 550
+__print_ascii_art_lolcat() {
+    { printf "%s\n" "$1" | toilet -w $COLUMNS ; __print_centered_string "$2" ; } | lolcat -S 550
 }
 
 
-__print_centered_string ()
-{
+__print_centered_string() {
     local c_string="$1"
     local mid=$(((${#c_string}+$COLUMNS)/2))
     local leftspace=$((${mid}-${#c_string}))
@@ -40,8 +36,7 @@ __print_centered_string ()
 
 
 # Args: stringvar, offset
-__print_centered_multiline ()
-{
+__print_centered_multiline() {
     # Find longest string
     local strlen=0
     local offset=$2
@@ -71,8 +66,7 @@ __print_centered_multiline ()
 }
 
 
-__print_fixed_singleline ()
-{
+__print_fixed_singleline() {
     local c_string="$1"
     local mid=$(((strlen+$COLUMNS)/2))
     local leftspace=$((${mid}-strlen))
