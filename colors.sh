@@ -29,3 +29,37 @@ __tunderline='\e[4m'
 # Color Reset
 __reset='\e[0m'
 
+
+__echo_color() {
+	if [ $# -eq 0 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+		echo "Usage: __echo_color color echo_arguments..."
+		
+		if [ $# -eq 0 ]; then
+			return 2
+		else
+			return 0
+		fi
+	fi
+	
+	/bin/echo -e -n "$1"
+	/bin/echo ${*:2}
+	/bin/echo -e -n "$__reset"
+}
+
+
+__printf_color() {
+	if [ $# -eq 0 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+		echo "Usage: __printf_color color printf_arguments..."
+		
+		if [ $# -eq 0 ]; then
+			return 2
+		else
+			return 0
+		fi
+	fi
+	
+	printf "$1"
+	printf ${*:2}
+	printf "$__reset"
+}
+
