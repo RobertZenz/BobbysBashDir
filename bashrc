@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Make sure that files are only writeable by us, readonly for others
 # in our group and everyone else can't touch them.
 umask 0027

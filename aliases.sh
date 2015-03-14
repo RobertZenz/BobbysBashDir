@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 alias egrep='egrep --color'
 alias fgrep='fgrep --color'
 alias grep='grep --color'

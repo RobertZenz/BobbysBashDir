@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 __greet() {
 	local hostname=$(hostname)
 	local kernelinfo=$(uname --kernel-name --kernel-release --hardware-platform --operating-system)
