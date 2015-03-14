@@ -31,15 +31,7 @@ __reset='\e[0m'
 
 
 __echo_color() {
-	if [ $# -eq 0 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-		echo "Usage: __echo_color color echo_arguments..."
-		
-		if [ $# -eq 0 ]; then
-			return 2
-		else
-			return 0
-		fi
-	fi
+	__help "Usage: __echo_color color echo_arguments..." $*
 	
 	/bin/echo -e -n "$1"
 	/bin/echo ${*:2}
@@ -48,15 +40,7 @@ __echo_color() {
 
 
 __printf_color() {
-	if [ $# -eq 0 ] || [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-		echo "Usage: __printf_color color printf_arguments..."
-		
-		if [ $# -eq 0 ]; then
-			return 2
-		else
-			return 0
-		fi
-	fi
+	__help "Usage: __printf_color color printf_arguments..." $*
 	
 	printf "$1"
 	printf ${*:2}

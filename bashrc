@@ -38,9 +38,11 @@ export PAGER=most
 source ~/.bash/aliases.sh
 source ~/.bash/colors.sh
 source ~/.bash/config.sh
+source ~/.bash/exit-codes.sh
 source ~/.bash/greet.sh
 source ~/.bash/print-functions.sh
 source ~/.bash/prompt.sh
+source ~/.bash/util-functions.sh
 
 
 PS1='$(__prompt "\w" "$?")'
