@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 
-__hostcolor="$__tgreen"
-__hostfont="smblock"
+__hostcolor="$__tyellow"
+__hostfont="pagga"
 
