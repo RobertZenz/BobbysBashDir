@@ -6,19 +6,19 @@ __clear() {
 }
 
 __cursor_backward() {
-	/bin/echo -e -n "\033[${1:1}D"
+	/bin/echo -e -n "\033[${1:-1}D"
 }
 
 __cursor_down() {
-	/bin/echo -e -n "\033[${1:1}B"
+	/bin/echo -e -n "\033[${1:-1}B"
 }
 
 __cursor_forward() {
-	/bin/echo -e -n "\033[${1:1}C"
+	/bin/echo -e -n "\033[${1:-1}C"
 }
 
 __cursor_position() {
-	/bin/echo -e -n "\033[${1:0};${2:0}H"
+	/bin/echo -e -n "\033[${1:-0};${2:-0}H"
 }
 
 __cursor_restore() {
@@ -30,6 +30,6 @@ __cursor_save() {
 }
 
 __cursor_up() {
-	/bin/echo -e -n "\033[${1:1}A"
+	/bin/echo -e -n "\033[${1:-1}A"
 }
 
