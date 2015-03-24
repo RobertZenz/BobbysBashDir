@@ -24,7 +24,7 @@ __print_centered_line() {
 	local length=$1
 	
 	if [ -z "$length" ]; then
-		length=72
+		length=76
 	fi
 	
 	local char="-"
