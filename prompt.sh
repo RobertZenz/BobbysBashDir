@@ -28,8 +28,7 @@ __prompt() {
 		exitcode=$__tred$exitcode$__reset
 	fi
 	
-	local gitinfo=
-	$(git rev-parse > /dev/null 2>&1)
+	local gitinfo=$(git rev-parse > /dev/null 2>&1)
 	if [ $? -eq 0 ]; then
 		gitrepo=$(git rev-parse --show-toplevel)
 		gitrepo=$(basename "$gitrepo")
