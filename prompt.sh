@@ -29,12 +29,13 @@ __prompt() {
 	fi
 	
 	local gitinfo=""
+	# Test if we're within a git repository.
 	$(git rev-parse > /dev/null 2>&1)
 	if [ $? -eq 0 ]; then
-		gitrepo=$(git rev-parse --show-toplevel)
-		gitrepo=$(basename "$gitrepo")
-		gitbranch=$(git rev-parse --abbrev-ref HEAD)
-		gitcommit=$(git rev-parse --short HEAD)
+		local gitrepo=$(git rev-parse --show-toplevel)
+		local gitrepo=$(basename "$gitrepo")
+		local gitbranch=$(git rev-parse --abbrev-ref HEAD)
+		local gitcommit=$(git rev-parse --short HEAD)
 		gitinfo=" $separator $__tyellow$gitrepo$__reset@$__tyellow$gitbranch$__reset@$__tyellow$gitcommit$__reset"
 	fi
 	
