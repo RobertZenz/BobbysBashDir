@@ -32,16 +32,16 @@ __reset='\e[0m'
 
 
 __echo_color() {
-	__help "Usage: __echo_color color echo_arguments..." $*
+	__help "Usage: __echo_color color echo_arguments..." "$*"
 	
 	/bin/echo -e -n "$1"
-	/bin/echo ${*:2}
+	/bin/echo "${*:2}"
 	/bin/echo -e -n "$__reset"
 }
 
 
 __printf_color() {
-	__help "Usage: __printf_color color printf_arguments..." $*
+	__help "Usage: __printf_color color printf_arguments..." "$*"
 	
 	printf "$1"
 	printf ${*:2}
