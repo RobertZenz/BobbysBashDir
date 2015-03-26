@@ -18,7 +18,7 @@ __help() {
 
 __line() {
 	local char=${1- }
-	local count=${2:-$(tput cols)}
+	local count=${2:-${COLUMNS:-$(tput cols)}}
 	local filler=""
 	
 	for counter in $(seq $count); do
@@ -36,7 +36,7 @@ __sameline() {
 	while read line; do
 		echo -n $line
 		
-		local remaining=$(($columns-${#line}))
+		local remaining=$((${COLUMNS:-$(tput cols)}-${#line}))
 	
 		if [ $remaining -gt 0 ]; then
 			__line " " $remaining
@@ -66,9 +66,11 @@ __sameline() {
 }
 
 __task() {
-	echo "[   ] $1"
+	__echo_color $__tbold "[   ] $1"
 	
-	local error=$( { ${*:2} | __sameline 3 ; } 2>&1)
+	local tmperr=$(mktemp)
+	
+	${*:2} 2> "$tmperr" | __sameline 1
 	
 	local result=${PIPESTATUS[0]}
 	
@@ -83,9 +85,16 @@ __task() {
 	
 	echo
 	
-	if [ ${#error} -gt 0 ]; then
+	local errors=$(cat "$tmperr")
+	rm "$tmperr"
+	
+	if [ ${#errors} -gt 0 ]; then
 		__echo_color $__tred "$errors"
 	fi
+	
+	# Only terminate if we're inside a script and exit code is not zero.
+	if [ -z "$PS1" ] && [ $result -ne 0 ]; then
+		exit $result
+	fi
 }
-
 
