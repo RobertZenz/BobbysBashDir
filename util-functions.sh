@@ -66,14 +66,21 @@ __sameline() {
 }
 
 __task() {
+	__help "Usage: __task taskname command..." $*
+	
 	__echo_color $__tbold "[   ] $1"
 	
+	# stderr will go to this temp file because it is not possible that
+	# capture it and still send stdout to somewhere else.
 	local tmperr=$(mktemp)
 	
+	# Execute the command that we are supposed to execute.
 	${*:2} 2> "$tmperr" | __sameline 1
 	
+	# Gets the exit code of the first command.
 	local result=${PIPESTATUS[0]}
 	
+	# Reposition the cursor to insert the exit code.
 	__cursor_up
 	__cursor_forward
 	
@@ -83,8 +90,11 @@ __task() {
 		__printf_color $__tred "%3d" $result
 	fi
 	
+	# Get back onto the next line for further output.
 	echo
 	
+	# Read the stderr file, delete it and if there was something printed
+	# on stderr, print that too.
 	local errors=$(cat "$tmperr")
 	rm "$tmperr"
 	
