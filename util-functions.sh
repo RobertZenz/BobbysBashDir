@@ -93,14 +93,11 @@ __task() {
 	# Get back onto the next line for further output.
 	echo
 	
-	# Read the stderr file, delete it and if there was something printed
-	# on stderr, print that too.
-	local errors=$(cat "$tmperr")
-	rm "$tmperr"
-	
-	if [ ${#errors} -gt 0 ]; then
-		__echo_color $__tred "$errors"
+	# If there is something in the err file, print it and then remove it.
+	if [ -s "$tmperr" ]; then
+		cat "$tmperr" | __echo_color $__tred
 	fi
+	rm "$tmperr"
 	
 	# Only terminate if we're inside a script and exit code is not zero.
 	if [ -z "$PS1" ] && [ $result -ne 0 ]; then
