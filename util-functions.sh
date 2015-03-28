@@ -33,7 +33,7 @@ __sameline() {
 	
 	local line_counter=0
 	
-	# Reda line by line from stdin
+	# Read line by line from stdin
 	while read line; do
 		# echo the read line without a new line at the end,
 		# so that we can fill the rest of the line.
