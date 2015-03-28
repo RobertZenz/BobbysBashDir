@@ -33,17 +33,22 @@ __sameline() {
 	
 	local line_counter=0
 	
+	# Reda line by line from stdin
 	while read line; do
+		# echo the read line without a new line at the end,
+		# so that we can fill the rest of the line.
 		echo -n $line
 		
+		# The remaining number of characters of the line.
 		local remaining=$((${COLUMNS:-$(tput cols)}-${#line}))
-	
+		
 		if [ $remaining -gt 0 ]; then
 			__line " " $remaining
 		else
 			echo
 		fi
 		
+		# If we've echoed enough lines, we'll scroll back to the beginning.
 		line_counter=$((line_counter+1))
 		
 		if [ $line_counter -ge $lines ]; then
@@ -52,15 +57,19 @@ __sameline() {
 		fi
 	done < /dev/stdin
 	
+	# Clear all the output and set the cursor back to the beginning.
 	if [ $line_counter -lt $lines ]; then
+		# Move to the beginning.
 		if [ $line_counter -gt 0 ]; then
 			__cursor_up $line_counter
 		fi
 		
+		# Clear all lines.
 		for counter in $(seq $lines); do
 			__line " "
 		done
 		
+		# Back to the beginning.
 		__cursor_up $lines
 	fi
 }
