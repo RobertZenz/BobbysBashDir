@@ -32,19 +32,35 @@ __reset='\e[0m'
 
 
 __echo_color() {
-	__help "Usage: __echo_color color echo_arguments..." $*
+	__help "Usage: __echo_color color echo_arguments... or pipe input" $*
 	
 	/bin/echo -e -n "$1"
-	/bin/echo "${*:2}"
+	
+	if [ ${#*} -ge 2 ]; then
+		/bin/echo "${*:2}"
+	else
+		while read line; do
+			/bin/echo "$line"
+		done < /dev/stdin
+	fi
+	
 	/bin/echo -e -n "$__reset"
 }
 
 
 __printf_color() {
-	__help "Usage: __printf_color color printf_arguments..." $*
+	__help "Usage: __printf_color color printf_arguments... or pipe input" $*
 	
 	printf "$1"
-	printf ${*:2}
+	
+	if [ ${#*} -ge 2 ]; then
+		printf ${*:2}
+	else
+		while read line; do
+			printf -- "$line\n"
+		done < /dev/stdin
+	fi
+	
 	printf "$__reset"
 }
 
