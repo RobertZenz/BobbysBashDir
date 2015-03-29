@@ -1,17 +1,22 @@
 #!/usr/bin/env bash
 
 
+# Changes into each directory in the current directory and executes the given
+# command, then goes back.
 __alld() {
 	__help "Usage: __alld command [options]..." $*
 	
 	for item in *; do
 		if [ -d "$item" ]; then
+			# Print the name of the current directory,
 			__echo_color $__tblue "$item"
 			
+			# cd into the directory, execute the command and cd back.
 			cd -- "$item"
 			$*
 			cd -
 			
+			# Add an empty line for nicer formatting.
 			echo
 		fi
 	done
