@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
 
 
+__alld() {
+	__help "Usage: __alld command [options]..." $*
+	
+	for item in *; do
+		if [ -d "$item" ]; then
+			__echo_color $__tblue "$item"
+			
+			cd -- "$item"
+			$*
+			cd -
+			
+			echo
+		fi
+	done
+}
+
 __help() {
 	if [ $# -eq 1 ] || [ "$2" = "-h" ] || [ "$2" = "--help" ]; then
 		echo "$1"
