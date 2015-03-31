@@ -36,7 +36,7 @@ export PAGER=most
 
 
 # source all we need.
-source ~/.bash/include.sh
+source ~/.bash/includes.sh
 
 source ~/.bash/aliases.sh
 source ~/.bash/config.sh
