@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Robert 'Bobby' Zenz
+# https://github.com/RobertZenz/BobbysBashDir
+# Licensed as Public Domain or Creative Commons Zero
+
 
 # Make sure that files are only writeable by us, readonly for others
 # in our group and everyone else can't touch them.

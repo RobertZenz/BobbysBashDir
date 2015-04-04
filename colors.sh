@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Robert 'Bobby' Zenz
+# https://github.com/RobertZenz/BobbysBashDir
+# Licensed as Public Domain or Creative Commons Zero
+
 
 # Text Color
 __tblack='\e[30m'

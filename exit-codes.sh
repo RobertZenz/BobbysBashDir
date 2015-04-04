@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
+# Robert 'Bobby' Zenz
+# https://github.com/RobertZenz/BobbysBashDir
+# Licensed as Public Domain or Creative Commons Zero
+
 
 __exit_norm=0			# Normal completion
-__exit_ok=0			# Normal completion
+__exit_ok=0				# Normal completion
 __exit_perm=1 			# Operation not permitted
 __exit_general=1 		# General error
 __exit_noent=2 			# No such file or directory

@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Robert 'Bobby' Zenz
+# https://github.com/RobertZenz/BobbysBashDir
+# Licensed as Public Domain or Creative Commons Zero
+
 
 # Changes into each directory in the current directory and executes the given
 # command, then goes back.

@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Robert 'Bobby' Zenz
+# https://github.com/RobertZenz/BobbysBashDir
+# Licensed as Public Domain or Creative Commons Zero
+
 
 __df_short_uuid() {
 	df --human-readable --exclude-type=tmpfs --exclude-type=devtmpfs --exclude-type=ecryptfs -T | \
