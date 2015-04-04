@@ -13,19 +13,19 @@ __prompt() {
 	local username=$(id --user --name)
 	if [ $userid -eq 0 ]; then
 		prompt="#"
-		username=$__tred$username$__reset
+		username=$__tred$username$__treset
 	fi
 	
 	local hostname=$(hostname)
-	hostname=$__hostcolor$hostname$__reset
+	hostname=$__hostcolor$hostname$__treset
 	
 	local date=$(date "+%I:%M:%S %p")
 	
 	local exitcode=$(printf "% 4d" "$2")
 	if [ $exitcode -eq 0 ]; then
-		exitcode=$__tgreen$exitcode$__reset
+		exitcode=$__tgreen$exitcode$__treset
 	else
-		exitcode=$__tred$exitcode$__reset
+		exitcode=$__tred$exitcode$__treset
 	fi
 	
 	local gitinfo=""
@@ -36,7 +36,7 @@ __prompt() {
 		local gitrepo=$(basename "$gitrepo")
 		local gitbranch=$(git rev-parse --abbrev-ref HEAD)
 		local gitcommit=$(git rev-parse --short HEAD)
-		gitinfo=" $separator $__tyellow$gitrepo$__reset@$__tyellow$gitbranch$__reset@$__tyellow$gitcommit$__reset"
+		gitinfo=" $separator $__tyellow$gitrepo$__treset@$__tyellow$gitbranch$__treset@$__tyellow$gitcommit$__treset"
 	fi
 	
 	local line=""

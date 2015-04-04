@@ -39,9 +39,10 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; histor
 export PAGER=most
 
 
-# source all we need.
+# source the default includes.
 source ~/.bash/includes.sh
 
+# source the bashrc specific stuff.
 source ~/.bash/aliases.sh
 source ~/.bash/config.sh
 source ~/.bash/greet.sh

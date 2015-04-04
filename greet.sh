@@ -23,7 +23,7 @@ __greet() {
 	
 	/bin/echo -e "$__hostcolor"
 	 __print_centered_multiline "$(toilet --font "$__hostfont" $hostname)"
-	/bin/echo -e "$__reset"
+	/bin/echo -e "$__treset"
 	
 	__print_centered_string "$date"
 	__print_centered_line

@@ -26,6 +26,7 @@ __alld() {
 	done
 }
 
+
 __help() {
 	if [ $# -eq 1 ] || [ "$2" = "-h" ] || [ "$2" = "--help" ]; then
 		echo "$1"

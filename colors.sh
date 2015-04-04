@@ -32,7 +32,7 @@ __tbold='\e[1m'
 __tunderline='\e[4m'
 
 # Color Reset
-__reset='\e[0m'
+__treset='\e[0m'
 
 
 __echo_color() {
@@ -48,7 +48,7 @@ __echo_color() {
 		done < /dev/stdin
 	fi
 	
-	/bin/echo -e -n "$__reset"
+	/bin/echo -e -n "$__treset"
 }
 
 
@@ -65,6 +65,6 @@ __printf_color() {
 		done < /dev/stdin
 	fi
 	
-	printf "$__reset"
+	printf "$__treset"
 }
 
