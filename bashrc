@@ -29,7 +29,7 @@ shopt -s checkwinsize
 HISTCONTROL=ignoredups:ignorespace:erasedups
 HISTSIZE=1000
 HISTFILESIZE=2000
-
+HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 
 # Make sure that history is saved and loaded at every command. This is needed
 # to have a good working history acroos mulitple bash sessions.
