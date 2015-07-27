@@ -27,8 +27,8 @@ shopt -s checkwinsize
 
 # Set up the history.
 HISTCONTROL=ignoredups:ignorespace:erasedups
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=50000
 HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 
 
