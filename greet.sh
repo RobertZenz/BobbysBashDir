@@ -20,6 +20,7 @@ __greet() {
 	local osinfo="$(lsb_release -ds) $(lsb_release -cs)"
 	local uptime="$(uptime)"
 	local users="$(who --users)"
+	local lastlogins="$(last -3 | head -3)"
 	
 	/bin/echo -e "$__hostcolor"
 	 __print_centered_multiline "$(toilet --font "$__hostfont" $hostname)"
@@ -33,5 +34,7 @@ __greet() {
 	__print_centered_multiline "$mounts"
 	__print_centered_line
 	__print_centered_multiline "$users"
+	__print_centered_line
+	__print_centered_multiline "$lastlogins"
 }
 
