@@ -32,6 +32,10 @@ HISTFILESIZE=50000
 HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
 
 
+# Make tabs 4 spaces wide.
+tabs 4
+
+
 # Make sure that history is saved and loaded at every command. This is needed
 # to have a good working history acroos mulitple bash sessions.
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
