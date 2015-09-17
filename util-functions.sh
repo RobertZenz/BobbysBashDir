@@ -134,9 +134,6 @@ __task() {
 	fi
 	rm "$tmperr"
 	
-	# Only terminate if we're inside a script and exit code is not zero.
-	if [ -z "$PS1" ] && [ $result -ne 0 ]; then
-		exit $result
-	fi
+	return $result
 }
 
