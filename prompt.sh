@@ -51,7 +51,7 @@ __prompt() {
 	done
 	
 	/bin/echo -e "$line"
-	/bin/echo -e "$username@$hostname · $exitcode$gitinfo · $date"
+	/bin/echo -e "$username@$hostname $separator $date $separator $exitcode$gitinfo"
 	/bin/echo -en "$currentdir$prompt "
 }
 
