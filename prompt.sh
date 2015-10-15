@@ -25,7 +25,13 @@ __prompt() {
 	if [ $exitcode -eq 0 ]; then
 		exitcode="$__tgreen$exitcode$__treset"
 	else
-		exitcode="$__tred$exitcode$separator${__exit_codes[$2]}$__treset"
+		exitcodetext=${__exit_codes[$2]}
+		
+		if [ -z "$exitcodetext" ]; then
+			exitcodetext="???"
+		fi
+		
+		exitcode="$__tred$exitcode$separator$exitcodetext$__treset"
 	fi
 	
 	local gitinfo=""
