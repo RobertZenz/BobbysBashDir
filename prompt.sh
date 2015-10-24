@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
 
+# Glyphs:
+#	‗	―	…	‾
+#	☰ 	☱ 	☲ 	☳ 	☴ 	☵ 	☶ 	☷
+#	⚊ 	⚋ 	⚌ 	⚍ 	⚎ 	⚏
+
 __prompt() {
 	local currentdir="$1"
 	
+	local line_glyph="⚋"
 	local separator="·"
 	
 	local userid="$(id --user)"
@@ -53,7 +59,7 @@ __prompt() {
 	local line=""
 	
 	for counter in $(seq $(tput cols)); do
-		line="$line$separator"
+		line="$line$line_glyph"
 	done
 	
 	/bin/echo -e "$line"
