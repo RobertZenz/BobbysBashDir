@@ -9,7 +9,7 @@
 __prompt() {
 	local currentdir="$1"
 	
-	local line_glyph="⚋"
+	local line_glyph="-"
 	local separator="·"
 	
 	local userid="$(id --user)"
