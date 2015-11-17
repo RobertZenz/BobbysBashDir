@@ -141,7 +141,7 @@ __exit_nocommmand=127	# Command not found
 __exit_keyrevoked=128	# Key has been revoked
 __exit_invalexit=128	# Invalid argument to exit
 __exit_keyrejected=129	# Key was rejected by service
-
+__exit_control_c=130	# Process terminated by Ctrl+C
 
 __exit_codes=()
 __exit_codes[0]="norm|ok"
@@ -274,7 +274,7 @@ __exit_codes[126]="nokey|cominv"
 __exit_codes[127]="keyexpired|nocommand"
 __exit_codes[128]="keyrevoked|invalexit"
 __exit_codes[129]="keyrejected"
-
+__exit_codes[130]="ctrlc"
 
 __exit_messages=()
 __exit_messages[0]="Normal completion"
@@ -407,4 +407,5 @@ __exit_messages[126]="Required key not available | Command invoked cannot execut
 __exit_messages[127]="Key has expired | Command not found"
 __exit_messages[128]="Key has been revoked | Invalid argument to exit"
 __exit_messages[129]="Key was rejected by service"
+__exit_messages[130]="Process terminated by Ctrl+C"
 
