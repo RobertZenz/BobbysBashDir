@@ -5,8 +5,12 @@
 # Licensed as Public Domain or Creative Commons Zero
 
 
+##
 # Changes into each directory in the current directory and executes the given
 # command, then goes back.
+#
+# @param command The command to execute.
+# @param options Optional. The options for the provided command.
 __alld() {
 	__help "Usage: __alld command [options]..." $*
 	
@@ -27,9 +31,16 @@ __alld() {
 }
 
 
+##
+# Checks the given arguments and prints the given help text if necessary.
+#
+# @param help_text The help text to print.
+# @param ... The parameters provided.
 __help() {
+	local help_text="$1"
+	
 	if [ $# -eq 1 ] || [ "$2" = "-h" ] || [ "$2" = "--help" ]; then
-		echo "$1"
+		echo "$help_text"
 		
 		# Only terminate if we're inside a script.
 		if [ -z "$PS1" ]; then
@@ -42,6 +53,13 @@ __help() {
 	fi
 }
 
+##
+# Prints the given character as many times as necessary to fill the line, or
+# as many times as specified.
+#
+# @param char The character to print.
+# @param count Optional. How many times to print the character, defaults to
+#              the screen width.
 __line() {
 	local char=${1- }
 	local count=${2:-${COLUMNS:-$(tput cols)}}
@@ -54,6 +72,10 @@ __line() {
 	echo "$filler"
 }
 
+##
+# Reads input from stdin and prints it on the same line.
+#
+# @param count Optional. How many lines to use, defaults to 1.
 __sameline() {
 	local lines=${1:-1}
 	
@@ -100,6 +122,15 @@ __sameline() {
 	fi
 }
 
+##
+# Executes a command as "task" meaning that it is printed with a formatted text
+# and the output is printed on the same line. The output if stderr is printed
+# as a summary afterwards.
+#
+# @param taskname The name of the task.
+# @param command The command to execute.
+# @param options Optional. The options for the command.
+# @return The exit code of the executed command.
 __task() {
 	__help "Usage: __task taskname command..." $*
 	
@@ -137,8 +168,13 @@ __task() {
 	return $result
 }
 
+##
+# Waits for a key to be pressed.
+#
+# @param text Optional. The text to print, defaults to a simple "press a key"
+#             text.
 __waitforkey() {
-	text="$*"
+	local text="$*"
 	
 	if [ -z "$text" ]; then
 		text="Please press a key to continue..."
