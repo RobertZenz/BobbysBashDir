@@ -137,3 +137,13 @@ __task() {
 	return $result
 }
 
+__waitforkey() {
+	text="$*"
+	
+	if [ -z "$text" ]; then
+		text="Please press a key to continue..."
+	fi
+	
+	read -p "$text"
+}
+
