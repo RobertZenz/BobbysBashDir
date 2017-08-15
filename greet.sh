@@ -15,7 +15,7 @@ __df_short_uuid() {
 __greet() {
 	local hostname=$(hostname)
 	local kernelinfo=$(uname --kernel-name --kernel-release --hardware-platform --operating-system)
-	local date="$(date "+%a, %b %_d %Y · %I:%M:%S %p %z (%Z) · %s")"
+	local date="$(date "+%a, %b %_d %Y · %H:%M:%S %z (%Z) · %s")"
 	local mounts="$(__df_short_uuid)"
 	local osinfo="$(lsb_release -ds) $(lsb_release -cs)"
 	local uptime="$(uptime)"

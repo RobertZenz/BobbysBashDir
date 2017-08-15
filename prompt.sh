@@ -25,7 +25,7 @@ __prompt() {
 	local hostname="$(hostname)"
 	hostname="$__hostcolor$hostname$__treset"
 	
-	local date="$(date "+%I:%M:%S %p")"
+	local date="$(date "+%H:%M:%S")"
 	
 	local exitcode="$(printf "% 4d" "$2")"
 	if [ $exitcode -eq 0 ]; then
