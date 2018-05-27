@@ -83,26 +83,32 @@ __sameline() {
 	
 	# Read line by line from stdin
 	while read line; do
-		# echo the read line without a new line at the end,
-		# so that we can fill the rest of the line.
-		echo -n $line
+		local remaining_start=0
 		
-		# The remaining number of characters of the line.
-		local remaining=$((${COLUMNS:-$(tput cols)}-${#line}))
-		
-		if [ $remaining -gt 0 ]; then
-			__line " " $remaining
-		else
-			echo
-		fi
-		
-		# If we've echoed enough lines, we'll scroll back to the beginning.
-		line_counter=$((line_counter+1))
-		
-		if [ $line_counter -ge $lines ]; then
-			__cursor_up $line_counter
-			line_counter=0
-		fi
+		while [ $remaining_start -lt ${#line} ]; do
+			# echo the read line without a new line at the end,
+			# so that we can fill the rest of the line.
+			echo -n ${line:$remaining_start:$COLUMNS}
+			
+			remaining_start=$(($remaining_start+$COLUMNS))
+			
+			# The remaining number of characters of the line.
+			local remaining=$((${COLUMNS:-$(tput cols)}-${#line}))
+			
+			if [ $remaining -gt 0 ]; then
+				__line " " $remaining
+			else
+				echo
+			fi
+			
+			# If we've echoed enough lines, we'll scroll back to the beginning.
+			line_counter=$((line_counter+1))
+			
+			if [ $line_counter -ge $lines ]; then
+				__cursor_up $line_counter
+				line_counter=0
+			fi
+		done
 	done < /dev/stdin
 	
 	# Clear all the output and set the cursor back to the beginning.
