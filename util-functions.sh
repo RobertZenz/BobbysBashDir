@@ -147,7 +147,7 @@ __task() {
 	local tmperr=$(mktemp)
 	
 	# Execute the command that we are supposed to execute.
-	${*:2} 2> "$tmperr" | __sameline 1
+	"${@:2}" 2> "$tmperr" | __sameline 1
 	
 	# Gets the exit code of the first command.
 	local result=${PIPESTATUS[0]}
