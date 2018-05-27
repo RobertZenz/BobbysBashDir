@@ -88,9 +88,9 @@ __sameline() {
 		while [ $remaining_start -lt ${#line} ]; do
 			# echo the read line without a new line at the end,
 			# so that we can fill the rest of the line.
-			echo -n ${line:$remaining_start:$COLUMNS}
+			echo -n ${line:$remaining_start:${COLUMNS:-$(tput cols)}}
 			
-			remaining_start=$(($remaining_start+$COLUMNS))
+			remaining_start=$(($remaining_start+${COLUMNS:-$(tput cols)}))
 			
 			# The remaining number of characters of the line.
 			local remaining=$((${COLUMNS:-$(tput cols)}-${#line}))
