@@ -93,7 +93,7 @@ __sameline() {
 			remaining_start=$(($remaining_start+${COLUMNS:-$(tput cols)}))
 			
 			# The remaining number of characters of the line.
-			local remaining=$((${COLUMNS:-$(tput cols)}-${#line}))
+			local remaining=$((${COLUMNS:$(tput cols)}-${#line}+$remaining_start))
 			
 			if [ $remaining -gt 0 ]; then
 				__line " " $remaining
